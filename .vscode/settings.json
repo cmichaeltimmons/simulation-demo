@@ -5,5 +5,10 @@
     "source.fixAll.eslint": true,
     "source.fixAll.tslint": true,
     "source.fixAll.stylelint": true
-  }
+},
+"cSpell.words": [
+  "reduxjs",
+  "selectables",
+  "simonwep"
+]
 }
