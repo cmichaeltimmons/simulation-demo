@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { selectors as cellSelectors } from "../store/sliceCells";
 import { selectors as categorySelectors } from "../store/sliceCategories";
