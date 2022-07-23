@@ -23,7 +23,7 @@ export const SwitchList = (props: { selectionId: string }) => {
   return (
     <List className={classes.root}>
       {categoryIds.map((id) => (
-        <CategoryListItem selectionId={props.selectionId} categoryId={id} />
+        <CategoryListItem key={id} selectionId={props.selectionId} categoryId={id} />
       ))}
     </List>
   );

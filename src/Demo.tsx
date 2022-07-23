@@ -4,11 +4,11 @@ import { RootState } from "./store/store";
 import { Grid } from "./components/Grid";
 import { selectors } from "./store/sliceSelection";
 import { AppBar, Box, Toolbar, Typography } from "@material-ui/core";
+
 export const Demo = () => {
   const selectionIds = useSelector((state: RootState) =>
     selectors.selectIds(state)
   ) as string[];
-
   return (
     <>
       <AppBar color="transparent" position="fixed">
@@ -21,6 +21,7 @@ export const Demo = () => {
           display="flex"
           style={{ justifyContent: "center" }}
           flexDirection="row"
+          key={id}
         >
           <Grid selectionId={id} />
         </Box>

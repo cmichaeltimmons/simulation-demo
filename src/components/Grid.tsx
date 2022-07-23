@@ -75,7 +75,7 @@ export const Grid = (props: { selectionId: string }) => {
       <div className={classes.sectionWrapper}>
         <section id={props.selectionId} className={classes.selectionContainer}>
           {cellIds.map((id) => (
-            <Cell cellId={id} />
+            <Cell key={id} cellId={id} />
           ))}
         </section>
       </div>
