@@ -13,7 +13,7 @@ export const Demo = () => {
     <>
       <AppBar color="transparent" position="fixed">
         <Toolbar>
-          <Typography variant="h6">Selection Demo</Typography>
+          <Typography variant="h6">Susquehanna Demo</Typography>
         </Toolbar>
       </AppBar>
       {selectionIds.map((id) => (
