@@ -10,7 +10,7 @@ export type Cell = {
   previousCategoryId: string;
   currentCategoryId: string;
   selectionId: string;
-  num: number;
+  value: string;
 };
 
 export const cellsAdapter = createEntityAdapter<Cell>({});

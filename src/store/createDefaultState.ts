@@ -5,6 +5,7 @@ import { cellsAdapter } from "./sliceCells";
 import { categoryColors } from "../colors";
 import { createId, createIds } from "../utils";
 import { Selection } from "./sliceSelection";
+import { pfIndexToPocket } from '../handMappings'
 
 export const createDefaultState = () => {
   /**
@@ -56,13 +57,13 @@ export const createDefaultState = () => {
   /**
    * cells default state
    */
-  const defaultCellsArray: Cell[] = defaultCellIds.map((id) => {
+  const defaultCellsArray: Cell[] = defaultCellIds.map((id, index) => {
     return {
       currentCategoryId: selectedCategoryId,
       previousCategoryId: selectedCategoryId,
       id,
       selectionId: defaultSelectionId,
-      num: Math.floor(Math.random() * 100),
+      value: pfIndexToPocket[index],
     };
   });
 

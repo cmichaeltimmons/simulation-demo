@@ -5,7 +5,6 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Switch from "@material-ui/core/Switch";
 import { selectors as categorySelectors } from "../store/sliceCategories";
-import { selectors as cellSelectors } from "../store/sliceCells";
 import {
   selectors as selectionSelectors,
   updateSelectedCategory,
@@ -35,18 +34,6 @@ export const CategoryListItem = (props: Props) => {
       })
     );
   };
-  const cells = useSelector((state: RootState) => {
-    return selection.cellIds.map((id) => cellSelectors.selectById(state, id)!);
-  });
-  const filteredCells = cells.filter(
-    (c) => c.currentCategoryId === props.categoryId
-  );
-  let sum = 0;
-  filteredCells.forEach((c) => {
-    if (c.currentCategoryId === props.categoryId) {
-      sum = sum + c.num;
-    }
-  });
   return (
     <ListItem>
       <ListItemIcon>
@@ -63,7 +50,7 @@ export const CategoryListItem = (props: Props) => {
           />
         </svg>
       </ListItemIcon>
-      <ListItemText primary={category.name} secondary={sum} />
+      <ListItemText primary={category.name} />
       <ListItemSecondaryAction>
         <Switch edge="end" onChange={onChange} checked={checked} />
       </ListItemSecondaryAction>

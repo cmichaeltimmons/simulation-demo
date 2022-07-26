@@ -33,7 +33,7 @@ export const Cell = (props: { cellId: string }) => {
   const classes = useStyles({ backgroundColor: category.fill });
   return (
     <div id={cellId} className={classes.cell}>
-      {cell.num}
+      {cell.value}
     </div>
   );
 };
