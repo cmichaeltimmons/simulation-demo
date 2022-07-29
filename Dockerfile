@@ -12,6 +12,9 @@ RUN npm install -g --silent node-gyp@v7.1.2
 
 COPY . .
 
+# Deploy client
+RUN cd /usr/src/app/client && npm install && npm run build
+
 #build addon
 RUN cd /usr/src/app/OMPEval && make all
 RUN node-gyp configure build

@@ -25,7 +25,7 @@ app.post('/api/run-simulations', (req, res) => {
 });
 
 // Serve the client
-//app.use(express.static(path.join(__dirname, "./", "build")));
+app.use(express.static(path.join(__dirname, "./client", "build")));
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
