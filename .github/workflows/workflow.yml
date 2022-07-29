@@ -14,7 +14,7 @@ on:
       - 'deployment.yml'
       - 'server.js'
       - 'Dockerfile'
-      - 'src/**'
+      - 'client/**'
       - 'public/**'
       - 'package.json'
       - '.github/workflows/**'
