@@ -3,7 +3,7 @@ import {
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { AppThunk, RootState } from "./store";
+import { RootState } from "./store";
 
 export type Cell = {
   id: string;
@@ -38,18 +38,6 @@ export const slice = createSlice({
 });
 
 export const { backToPrevious, newCategory, updateCell } = slice.actions;
-
-export const thunkNewCategory = (args: { cellId: string }): AppThunk<void> => (
-  dispatch,
-  getState
-) => {
-  const { cellId } = args;
-  const state = getState();
-  const cell = state.cells.entities[args.cellId]!;
-  const selection = state.selections.entities[cell.selectionId]!;
-  const { selectedCategoryId } = selection;
-  dispatch(newCategory({ cellId, selectedCategoryId }));
-};
 
 export const selectors = cellsAdapter.getSelectors(
   (state: RootState) => state.cells
