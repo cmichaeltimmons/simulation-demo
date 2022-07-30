@@ -2,7 +2,6 @@ import { Category, categoryAdapter } from "./sliceCategories";
 import { Cell } from "./sliceCells";
 import { selectionAdapter } from "./sliceSelection";
 import { cellsAdapter } from "./sliceCells";
-import { categoryColors } from "../colors";
 import { createId, createIds } from "../utils";
 import { Selection } from "./sliceSelection";
 import { pfIndexToPocket } from '../handMappings'
@@ -35,6 +34,15 @@ export const createDefaultState = () => {
   /**
    * categories default state
    */
+
+   const categoryColors = [
+    "#00bbf9",
+    "#F15BB5",
+    "#9B5DE5",
+    "#00F5D4",
+    "#00BBF9",
+  ];
+
   const defaultCategoriesArray: Category[] = [
     {
       id: foldId,
