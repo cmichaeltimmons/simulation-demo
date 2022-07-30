@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { RootState, useAppDispatch } from "../store/store";
 import Selection, { SelectionEvent } from "@simonwep/selection-js";
-import { backToPrevious, thunkNewCategory } from "../store/sliceCells";
+import { backToPrevious } from "../store/sliceCells"
+import { thunkNewCategory } from "../thunks/thunkNewCategory";
 import { useSelector } from "react-redux";
 import { SwitchList } from "./CategoryList";
 import { Cell } from "./Cell";
 import { makeStyles } from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
   "@global": {
     ".selection-area": {
