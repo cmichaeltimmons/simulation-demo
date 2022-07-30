@@ -37,6 +37,6 @@ export const slice = createSlice({
 
 export const { updateSelectedCategory } = slice.actions;
 
-export const selectors = selectionAdapter.getSelectors(
+export const selectionSelectors = selectionAdapter.getSelectors(
   (state: RootState) => state.selections
 );

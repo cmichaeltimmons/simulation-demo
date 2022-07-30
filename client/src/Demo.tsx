@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import { Grid } from "./components/Grid";
-import { selectors } from "./store/sliceSelection";
+import { selectionSelectors } from "./store/sliceSelection";
 import { AppBar, Box, makeStyles, Toolbar, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 export const Demo = () => {
   const classes = useStyles()
   const selectionIds = useSelector((state: RootState) =>
-    selectors.selectIds(state)
+    selectionSelectors.selectIds(state)
   ) as string[];
   return (
     <>

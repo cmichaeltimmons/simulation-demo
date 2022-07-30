@@ -6,7 +6,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Switch from "@material-ui/core/Switch";
 import { selectors as categorySelectors } from "../store/sliceCategories";
 import {
-  selectors as selectionSelectors,
+  selectionSelectors,
   updateSelectedCategory,
 } from "../store/sliceSelection";
 import { useDispatch, useSelector } from "react-redux";
