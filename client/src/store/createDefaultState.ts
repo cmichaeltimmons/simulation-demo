@@ -28,7 +28,8 @@ export const createDefaultState = () => {
     callId,
     raiseId
   ]
-  const defaultCellIds = createIds(100);
+  const heroCellIds = createIds(169);
+  const villianCellIds = createIds(169);
   const selectedCategoryId = foldId;
 
   /**
@@ -60,7 +61,7 @@ export const createDefaultState = () => {
   /**
    * cells default state
    */
-  const heroCellsArray: Cell[] = defaultCellIds.map((id, index) => {
+  const heroCellsArray: Cell[] = heroCellIds.map((id, index) => {
     return {
       currentCategoryId: selectedCategoryId,
       previousCategoryId: selectedCategoryId,
@@ -70,7 +71,7 @@ export const createDefaultState = () => {
     };
   });
 
-  const villianCellsArray: Cell[] = defaultCellIds.map((id, index) => {
+  const villianCellsArray: Cell[] = villianCellIds.map((id, index) => {
     return {
       currentCategoryId: selectedCategoryId,
       previousCategoryId: selectedCategoryId,
@@ -95,13 +96,14 @@ export const createDefaultState = () => {
    */
   const heroSelection: Selection = {
     id: heroId,
-    cellIds: defaultCellIds,
+    cellIds: heroCellIds,
     categoryIds: defaultCategoryIds,
     selectedCategoryId,
   };
+  
   const villianSelection: Selection = {
     id: villianId,
-    cellIds: defaultCellIds,
+    cellIds: villianCellIds,
     categoryIds: defaultCategoryIds,
     selectedCategoryId,
   };

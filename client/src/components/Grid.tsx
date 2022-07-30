@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   selectionContainer: {
     display: "grid",
-    gridTemplate: "repeat(10, 1fr) / repeat(10, 1fr)",
+    gridTemplate: "repeat(13, 1fr) / repeat(13, 1fr)",
     margin: "auto",
     "& .boxes": {
       border: "2px solid transparent",
@@ -71,7 +71,7 @@ export const Grid = (props: { selectionId: string }) => {
   }, [selectionId, dispatch]);
 
   return (
-    <div className={classes.mainContainer}>
+    <div>
       <div className={classes.sectionWrapper}>
         <section id={props.selectionId} className={classes.selectionContainer}>
           {cellIds.map((id) => (

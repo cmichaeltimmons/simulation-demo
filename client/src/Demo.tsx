@@ -3,9 +3,22 @@ import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import { Grid } from "./components/Grid";
 import { selectors } from "./store/sliceSelection";
-import { AppBar, Box, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Box, makeStyles, Toolbar, Typography } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  mainContainer: {
+    paddingTop: "64px",
+    height: "calc(100vh - 64px)",
+    width: "100vw",
+    padding: theme.spacing(1),
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+  }
+}));
 
 export const Demo = () => {
+  const classes = useStyles()
   const selectionIds = useSelector((state: RootState) =>
     selectors.selectIds(state)
   ) as string[];
@@ -16,6 +29,7 @@ export const Demo = () => {
           <Typography variant="h6">Susquehanna Demo</Typography>
         </Toolbar>
       </AppBar>
+      <div className={classes.mainContainer}>
       {selectionIds.map((id) => (
         <Box
           display="flex"
@@ -26,6 +40,7 @@ export const Demo = () => {
           <Grid selectionId={id} />
         </Box>
       ))}
+      </div>
     </>
   );
 };
