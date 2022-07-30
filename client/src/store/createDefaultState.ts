@@ -4,7 +4,7 @@ import { selectionAdapter } from "./sliceSelection";
 import { cellsAdapter } from "./sliceCells";
 import { createId, createIds } from "../utils";
 import { Selection } from "./sliceSelection";
-import { pfIndexToPocket } from '../handMappings'
+import { pfIndexToPocket } from '../utils/handMappings'
 
 export const createDefaultState = () => {
   /**
