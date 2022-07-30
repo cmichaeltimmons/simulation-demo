@@ -4,7 +4,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Switch from "@material-ui/core/Switch";
-import { selectors as categorySelectors } from "../store/sliceCategories";
+import { categorySelectors } from "../store/sliceCategories";
 import {
   selectionSelectors,
   updateSelectedCategory,

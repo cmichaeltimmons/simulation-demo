@@ -39,6 +39,6 @@ export const slice = createSlice({
 
 export const { backToPrevious, newCategory, updateCell } = slice.actions;
 
-export const selectors = cellsAdapter.getSelectors(
+export const cellSelectors = cellsAdapter.getSelectors(
   (state: RootState) => state.cells
 );

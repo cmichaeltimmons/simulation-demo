@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { selectors as cellSelectors } from "../store/sliceCells";
-import { selectors as categorySelectors } from "../store/sliceCategories";
+import { cellSelectors } from "../store/sliceCells";
+import { categorySelectors } from "../store/sliceCategories";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
