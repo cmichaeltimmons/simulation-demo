@@ -1,7 +1,5 @@
-import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
-
 import { selectionSelectors } from "../store/sliceSelection";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
