@@ -19,33 +19,35 @@ export const createDefaultState = () => {
    * default ids
    */
   const defaultSelectionId = createId();
-  const defaultCategoryIds = createIds(4);
+  const foldId = createId();
+  const callId = createId();
+  const raiseId = createId();
+  const defaultCategoryIds = [
+    foldId,
+    callId,
+    raiseId
+  ]
   const defaultCellIds = createIds(100);
-  const selectedCategoryId = defaultCategoryIds[0];
+  const selectedCategoryId = foldId;
 
   /**
    * categories default state
    */
   const defaultCategoriesArray: Category[] = [
     {
-      id: defaultCategoryIds[0],
-      name: "Category One",
+      id: foldId,
+      name: "Fold",
       fill: categoryColors[0],
     },
     {
-      id: defaultCategoryIds[1],
-      name: "Category Two",
-      fill: categoryColors[1],
-    },
-    {
-      id: defaultCategoryIds[2],
-      name: "Category Four",
-      fill: categoryColors[2],
-    },
-    {
-      id: defaultCategoryIds[3],
-      name: "Category Five",
+      id: callId,
+      name: "Call",
       fill: categoryColors[3],
+    },
+    {
+      id: raiseId,
+      name: "Raise",
+      fill: categoryColors[1],
     },
   ];
 
@@ -82,7 +84,7 @@ export const createDefaultState = () => {
     selectedCategoryId,
   };
 
-  const defaultSelectionsState = selectionAdapter.addOne(
+  let defaultSelectionsState = selectionAdapter.addOne(
     selectionInitialState,
     defaultSelection
   );
