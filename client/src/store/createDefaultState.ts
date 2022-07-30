@@ -18,7 +18,8 @@ export const createDefaultState = () => {
   /**
    * default ids
    */
-  const defaultSelectionId = createId();
+  const heroId = createId();
+  const villianId = createId();
   const foldId = createId();
   const callId = createId();
   const raiseId = createId();
@@ -59,34 +60,55 @@ export const createDefaultState = () => {
   /**
    * cells default state
    */
-  const defaultCellsArray: Cell[] = defaultCellIds.map((id, index) => {
+  const heroCellsArray: Cell[] = defaultCellIds.map((id, index) => {
     return {
       currentCategoryId: selectedCategoryId,
       previousCategoryId: selectedCategoryId,
       id,
-      selectionId: defaultSelectionId,
+      selectionId: heroId,
       value: pfIndexToPocket[index],
     };
   });
 
-  const defaultCells = cellsAdapter.addMany(
+  const villianCellsArray: Cell[] = defaultCellIds.map((id, index) => {
+    return {
+      currentCategoryId: selectedCategoryId,
+      previousCategoryId: selectedCategoryId,
+      id,
+      selectionId: villianId,
+      value: pfIndexToPocket[index],
+    };
+  });
+
+  let defaultCells = cellsAdapter.addMany(
     cellsInitialState,
-    defaultCellsArray
+    heroCellsArray
+  );
+
+  defaultCells = cellsAdapter.addMany(
+    defaultCells,
+    villianCellsArray
   );
 
   /**
    * selection default state
    */
-  const defaultSelection: Selection = {
-    id: defaultSelectionId,
+  const heroSelection: Selection = {
+    id: heroId,
+    cellIds: defaultCellIds,
+    categoryIds: defaultCategoryIds,
+    selectedCategoryId,
+  };
+  const villianSelection: Selection = {
+    id: villianId,
     cellIds: defaultCellIds,
     categoryIds: defaultCategoryIds,
     selectedCategoryId,
   };
 
-  let defaultSelectionsState = selectionAdapter.addOne(
+  let defaultSelectionsState = selectionAdapter.addMany(
     selectionInitialState,
-    defaultSelection
+    [heroSelection, villianSelection]
   );
 
   const defaultState = {
