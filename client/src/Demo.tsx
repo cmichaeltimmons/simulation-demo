@@ -7,7 +7,7 @@ import { AppBar, Box, makeStyles, Toolbar, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
-    paddingTop: "64px",
+    paddingTop: "128px",
     height: "calc(100vh - 64px)",
     width: "100vw",
     padding: theme.spacing(1),
