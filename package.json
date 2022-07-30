@@ -10,8 +10,7 @@
     "express": "^4.17.1",
     "knex": "^0.21.12",
     "nan": "^2.0.0",
-    "pg": "^8.4.2",
-    "sqlite3": "^5.0.0"
+    "pg": "^8.4.2"
   },
   "scripts": {
     "start": "node server.js",
