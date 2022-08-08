@@ -5,6 +5,8 @@ import { cellsAdapter } from "./sliceCells";
 import { createId, createIds } from "../utils";
 import { Selection } from "./sliceSelection";
 import { pfIndexToPocket } from '../utils/handMappings'
+import { RootState } from "./store";
+import { App } from './sliceApp';
 
 export const createDefaultState = () => {
   /**
@@ -22,14 +24,26 @@ export const createDefaultState = () => {
   const foldId = createId();
   const callId = createId();
   const raiseId = createId();
+  const openId = createId();
+  const visibleSimulationId = createId();
+
   const defaultCategoryIds = [
     foldId,
     callId,
-    raiseId
+    raiseId,
+    openId
   ]
+
   const heroCellIds = createIds(169);
   const villianCellIds = createIds(169);
   const selectedCategoryId = foldId;
+
+  /**
+   * create app state
+   */
+   const appState: App = {
+    visibleSimulation: visibleSimulationId
+  }
 
   /**
    * categories default state
@@ -58,7 +72,7 @@ export const createDefaultState = () => {
       id: raiseId,
       name: "Raise",
       fill: categoryColors[1],
-    },
+    }
   ];
 
   const defaultCategoryState = categoryAdapter.addMany(
@@ -125,6 +139,7 @@ export const createDefaultState = () => {
     categories: defaultCategoryState,
     cells: defaultCells,
     selections: defaultSelectionsState,
+    app: appState
   };
 
   return defaultState;
