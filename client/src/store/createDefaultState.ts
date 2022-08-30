@@ -4,9 +4,9 @@ import { selectionAdapter } from "./sliceSelection";
 import { cellsAdapter } from "./sliceCells";
 import { createId, createIds } from "../utils";
 import { Selection } from "./sliceSelection";
-import { pfIndexToPocket } from '../utils/handMappings'
-import { RootState } from "./store";
-import { App } from './sliceApp';
+import { simulationAdapter, Simulation } from "./sliceSimulation";
+import { pfIndexToPocket } from "../utils/handMappings";
+import { App } from "./sliceApp";
 
 export const createDefaultState = () => {
   /**
@@ -15,6 +15,7 @@ export const createDefaultState = () => {
   const cellsInitialState = cellsAdapter.getInitialState();
   const selectionInitialState = selectionAdapter.getInitialState();
   const categoryInitialState = categoryAdapter.getInitialState();
+  const simulationDefaultSate = simulationAdapter.getInitialState();
 
   /**
    * default ids
@@ -27,12 +28,7 @@ export const createDefaultState = () => {
   const openId = createId();
   const visibleSimulationId = createId();
 
-  const defaultCategoryIds = [
-    foldId,
-    callId,
-    raiseId,
-    openId
-  ]
+  const defaultCategoryIds = [foldId, callId, raiseId, openId];
 
   const heroCellIds = createIds(169);
   const villianCellIds = createIds(169);
@@ -41,15 +37,15 @@ export const createDefaultState = () => {
   /**
    * create app state
    */
-   const appState: App = {
-    visibleSimulation: visibleSimulationId
-  }
+  const appState: App = {
+    visibleSimulationId: visibleSimulationId,
+  };
 
   /**
    * categories default state
    */
 
-   const categoryColors = [
+  const categoryColors = [
     "#00bbf9",
     "#F15BB5",
     "#9B5DE5",
@@ -72,7 +68,12 @@ export const createDefaultState = () => {
       id: raiseId,
       name: "Raise",
       fill: categoryColors[1],
-    }
+    },
+    {
+      id: openId,
+      name: "Open",
+      fill: categoryColors[2],
+    },
   ];
 
   const defaultCategoryState = categoryAdapter.addMany(
@@ -103,15 +104,9 @@ export const createDefaultState = () => {
     };
   });
 
-  let defaultCells = cellsAdapter.addMany(
-    cellsInitialState,
-    heroCellsArray
-  );
+  let defaultCells = cellsAdapter.addMany(cellsInitialState, heroCellsArray);
 
-  defaultCells = cellsAdapter.addMany(
-    defaultCells,
-    villianCellsArray
-  );
+  defaultCells = cellsAdapter.addMany(defaultCells, villianCellsArray);
 
   /**
    * selection default state
@@ -122,7 +117,7 @@ export const createDefaultState = () => {
     categoryIds: defaultCategoryIds,
     selectedCategoryId,
   };
-  
+
   const villianSelection: Selection = {
     id: villianId,
     cellIds: villianCellIds,
@@ -130,16 +125,32 @@ export const createDefaultState = () => {
     selectedCategoryId,
   };
 
-  let defaultSelectionsState = selectionAdapter.addMany(
-    selectionInitialState,
-    [heroSelection, villianSelection]
+  let defaultSelectionsState = selectionAdapter.addMany(selectionInitialState, [
+    heroSelection,
+    villianSelection,
+  ]);
+
+  /**
+   * simulation default state
+   */
+
+  const defaultSimulation: Simulation = {
+    id: visibleSimulationId,
+    heroSelectionId: heroId,
+    villianSelectionId: villianId,
+  };
+
+  const defaultSimulationState = simulationAdapter.addOne(
+    simulationDefaultSate,
+    defaultSimulation
   );
 
   const defaultState = {
     categories: defaultCategoryState,
     cells: defaultCells,
     selections: defaultSelectionsState,
-    app: appState
+    simulations: defaultSimulationState,
+    app: appState,
   };
 
   return defaultState;

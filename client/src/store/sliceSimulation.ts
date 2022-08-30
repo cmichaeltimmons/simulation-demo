@@ -1,11 +1,8 @@
-import {
-    createEntityAdapter,
-    createSlice,
-    PayloadAction,
-} from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
 export type Simulation = {
+  id: string;
   heroSelectionId: string;
   villianSelectionId: string;
 };
@@ -18,6 +15,6 @@ export const slice = createSlice({
   reducers: {},
 });
 
-const simulationSelectors = simulationAdapter.getSelectors(
-    (state: RootState) => state.simulations
+export const simulationSelectors = simulationAdapter.getSelectors(
+  (state: RootState) => state.simulations
 );
