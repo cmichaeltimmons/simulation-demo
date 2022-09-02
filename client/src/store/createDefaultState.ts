@@ -131,26 +131,26 @@ export const createDefaultState = () => {
   ]);
 
   /**
-   * simulation default state
+   * scenario default state
    */
 
-  const defaultSimulation: Scenario = {
+  const defaultScenario: Scenario = {
     id: visibleScenarioId,
     heroSelectionId: heroId,
     villianSelectionId: villianId,
     requestId: null,
   };
 
-  const defaultSimulationState = scenarioAdapter.addOne(
+  const defaultScenarioState = scenarioAdapter.addOne(
     simulationDefaultSate,
-    defaultSimulation
+    defaultScenario
   );
 
   const defaultState = {
     categories: defaultCategoryState,
     cells: defaultCells,
     selections: defaultSelectionsState,
-    simulations: defaultSimulationState,
+    scenario: defaultScenarioState,
     app: appState,
   };
 
