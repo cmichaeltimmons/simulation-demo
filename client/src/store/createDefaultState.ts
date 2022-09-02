@@ -28,7 +28,8 @@ export const createDefaultState = () => {
   const openId = createId();
   const visibleScenarioId = createId();
 
-  const defaultCategoryIds = [foldId, callId, raiseId, openId];
+  const defaultVillianCategoryIds = [foldId, openId];
+  const defaultHeroCategoryIds = [foldId, callId, raiseId];
 
   const heroCellIds = createIds(169);
   const villianCellIds = createIds(169);
@@ -114,14 +115,14 @@ export const createDefaultState = () => {
   const heroSelection: Selection = {
     id: heroId,
     cellIds: heroCellIds,
-    categoryIds: defaultCategoryIds,
+    categoryIds: defaultHeroCategoryIds,
     selectedCategoryId,
   };
 
   const villianSelection: Selection = {
     id: villianId,
     cellIds: villianCellIds,
-    categoryIds: defaultCategoryIds,
+    categoryIds: defaultVillianCategoryIds,
     selectedCategoryId,
   };
 
@@ -131,7 +132,7 @@ export const createDefaultState = () => {
   ]);
 
   /**
-   * scenario default state
+   * scenario default states
    */
 
   const defaultScenario: Scenario = {

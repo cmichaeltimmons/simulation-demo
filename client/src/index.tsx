@@ -58,17 +58,17 @@ export const App = () => {
           display="flex"
           style={{ justifyContent: "center" }}
           flexDirection="row"
-          key={scenario.heroSelectionId}
+          key={scenario.villianSelectionId}
         >
-          <Grid selectionId={scenario.heroSelectionId} />
+          <Grid selectionId={scenario.villianSelectionId} />
         </Box>
         <Box
           display="flex"
           style={{ justifyContent: "center" }}
           flexDirection="row"
-          key={scenario.villianSelectionId}
+          key={scenario.heroSelectionId}
         >
-          <Grid selectionId={scenario.villianSelectionId} />
+          <Grid selectionId={scenario.heroSelectionId} />
         </Box>
       </div>
       <div className={classes.controlPanel}>
