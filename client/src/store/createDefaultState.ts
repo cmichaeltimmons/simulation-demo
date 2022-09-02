@@ -138,6 +138,7 @@ export const createDefaultState = () => {
     id: visibleSimulationId,
     heroSelectionId: heroId,
     villianSelectionId: villianId,
+    requestId: null,
   };
 
   const defaultSimulationState = simulationAdapter.addOne(

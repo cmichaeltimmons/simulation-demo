@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { slice as categoriesSlice } from "./sliceCategories";
 import { slice as cellsSlice } from "./sliceCells";
 import { slice as selectionSlice } from "./sliceSelection";
-import { slice as appSlice } from './sliceApp';
-import { slice as simulationSlice } from "./sliceSimulation"; 
+import { slice as appSlice } from "./sliceApp";
+import { slice as simulationSlice } from "./sliceSimulation";
+import { slice as simulationRequestSlice } from "./sliceSimulationRequest";
 import { createDefaultState } from "./createDefaultState";
 
 const preloadedState = createDefaultState();
@@ -18,7 +19,8 @@ export const createStore = (preloadedState = {} as PreLoadedStateType) =>
       categories: categoriesSlice.reducer,
       cells: cellsSlice.reducer,
       selections: selectionSlice.reducer,
-      app: appSlice.reducer
+      SimulationRequests: simulationRequestSlice.reducer,
+      app: appSlice.reducer,
     },
   });
 

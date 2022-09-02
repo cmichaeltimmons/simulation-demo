@@ -1,13 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "./store/store";
-import { CssBaseline } from "@material-ui/core";
+import { Button, CssBaseline } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import { Grid } from "./components/Grid";
 import { selectionSelectors } from "./store/sliceSelection";
-import { AppBar, Box, makeStyles, Toolbar, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  Box,
+  makeStyles,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
+import { thunkSimulationRequest } from "./thunks/thunkSimulationRequest";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -18,11 +25,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
-  }
+  },
 }));
 
 export const App = () => {
-  const classes = useStyles()
+  const classes = useStyles();
+  const dispatch = useDispatch();
   const selectionIds = useSelector((state: RootState) =>
     selectionSelectors.selectIds(state)
   ) as string[];
@@ -34,16 +42,19 @@ export const App = () => {
         </Toolbar>
       </AppBar>
       <div className={classes.mainContainer}>
-      {selectionIds.map((id) => (
-        <Box
-          display="flex"
-          style={{ justifyContent: "center" }}
-          flexDirection="row"
-          key={id}
-        >
-          <Grid selectionId={id} />
-        </Box>
-      ))}
+        {selectionIds.map((id) => (
+          <Box
+            display="flex"
+            style={{ justifyContent: "center" }}
+            flexDirection="row"
+            key={id}
+          >
+            <Grid selectionId={id} />
+          </Box>
+        ))}
+        <Button onClick={() => dispatch(thunkSimulationRequest())}>
+          Analyze
+        </Button>
       </div>
     </>
   );

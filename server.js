@@ -10,14 +10,12 @@ const HOST = '0.0.0.0';
 
 // App
 const app = express();
-app.use(bodyParser.urlencoded({
-    extended: true
-}))
+app.use(bodyParser.json())
 
 // Api
 
-app.post('/api/run-simulations', (req, res) => {
-    const result = addon.runGameSimulations(req.body.hero, req.body.villian);
+app.post('/api/run-simulations', async (req, res) => {
+    const result = await addon.runGameSimulations(req.body.hero, req.body.villian);
     res.json({
       hero: result.heroWins,
       villian: result.villianWins
