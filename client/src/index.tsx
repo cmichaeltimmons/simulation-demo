@@ -6,7 +6,7 @@ import { Button, CssBaseline } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import { Grid } from "./components/Grid";
-import { selectionSelectors } from "./store/sliceSelection";
+import { scenarioSelectors } from "./store/sliceScenario";
 import {
   AppBar,
   Box,
@@ -19,21 +19,33 @@ import { thunkSimulationRequest } from "./thunks/thunkSimulationRequest";
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
     paddingTop: "128px",
-    height: "calc(100vh - 64px)",
+    height: "calc(80vh - 64px)",
     width: "100vw",
     padding: theme.spacing(1),
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
   },
+  controlPanel: {
+    height: "calc(20vh - 64px)",
+    width: "100vw",
+    padding: theme.spacing(1),
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
 }));
 
 export const App = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const selectionIds = useSelector((state: RootState) =>
-    selectionSelectors.selectIds(state)
-  ) as string[];
+  const visibleScenarioId = useSelector(
+    (state: RootState) => state.app.visibleScenarioId
+  );
+  const scenario = useSelector(
+    (state: RootState) =>
+      scenarioSelectors.selectById(state, visibleScenarioId)!
+  );
   return (
     <>
       <AppBar color="transparent" position="fixed">
@@ -42,16 +54,24 @@ export const App = () => {
         </Toolbar>
       </AppBar>
       <div className={classes.mainContainer}>
-        {selectionIds.map((id) => (
-          <Box
-            display="flex"
-            style={{ justifyContent: "center" }}
-            flexDirection="row"
-            key={id}
-          >
-            <Grid selectionId={id} />
-          </Box>
-        ))}
+        <Box
+          display="flex"
+          style={{ justifyContent: "center" }}
+          flexDirection="row"
+          key={scenario.heroSelectionId}
+        >
+          <Grid selectionId={scenario.heroSelectionId} />
+        </Box>
+        <Box
+          display="flex"
+          style={{ justifyContent: "center" }}
+          flexDirection="row"
+          key={scenario.villianSelectionId}
+        >
+          <Grid selectionId={scenario.villianSelectionId} />
+        </Box>
+      </div>
+      <div className={classes.controlPanel}>
         <Button onClick={() => dispatch(thunkSimulationRequest())}>
           Analyze
         </Button>
