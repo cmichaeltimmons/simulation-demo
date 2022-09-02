@@ -52,5 +52,5 @@ export const slice = createSlice({
 export const { createRequest, requestComplete } = slice.actions;
 
 export const simulationSelectors = simulationRequestAdapter.getSelectors(
-  (state: RootState) => state.SimulationRequests
+  (state: RootState) => state.simulationRequests
 );

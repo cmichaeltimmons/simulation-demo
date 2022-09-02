@@ -4,7 +4,7 @@ import { selectionAdapter } from "./sliceSelection";
 import { cellsAdapter } from "./sliceCells";
 import { createId, createIds } from "../utils";
 import { Selection } from "./sliceSelection";
-import { simulationAdapter, Simulation } from "./sliceSimulation";
+import { scenarioAdapter, Scenario } from "./sliceScenario";
 import { pfIndexToPocket } from "../utils/handMappings";
 import { App } from "./sliceApp";
 
@@ -15,7 +15,7 @@ export const createDefaultState = () => {
   const cellsInitialState = cellsAdapter.getInitialState();
   const selectionInitialState = selectionAdapter.getInitialState();
   const categoryInitialState = categoryAdapter.getInitialState();
-  const simulationDefaultSate = simulationAdapter.getInitialState();
+  const simulationDefaultSate = scenarioAdapter.getInitialState();
 
   /**
    * default ids
@@ -26,7 +26,7 @@ export const createDefaultState = () => {
   const callId = createId();
   const raiseId = createId();
   const openId = createId();
-  const visibleSimulationId = createId();
+  const visibleScenarioId = createId();
 
   const defaultCategoryIds = [foldId, callId, raiseId, openId];
 
@@ -38,7 +38,7 @@ export const createDefaultState = () => {
    * create app state
    */
   const appState: App = {
-    visibleSimulationId: visibleSimulationId,
+    visibleScenarioId: visibleScenarioId,
   };
 
   /**
@@ -134,14 +134,14 @@ export const createDefaultState = () => {
    * simulation default state
    */
 
-  const defaultSimulation: Simulation = {
-    id: visibleSimulationId,
+  const defaultSimulation: Scenario = {
+    id: visibleScenarioId,
     heroSelectionId: heroId,
     villianSelectionId: villianId,
     requestId: null,
   };
 
-  const defaultSimulationState = simulationAdapter.addOne(
+  const defaultSimulationState = scenarioAdapter.addOne(
     simulationDefaultSate,
     defaultSimulation
   );

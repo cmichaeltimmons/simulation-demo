@@ -1,9 +1,6 @@
 import { AppThunk } from "../store/store";
 import { cellSelectors } from "../store/sliceCells";
-import {
-  simulationSelectors,
-  updateSimulation,
-} from "../store/sliceSimulation";
+import { scenarioSelectors, updateScenario } from "../store/sliceScenario";
 import { selectionSelectors } from "../store/sliceSelection";
 import {
   createRequest,
@@ -14,10 +11,10 @@ import { createId } from "../utils";
 export const thunkSimulationRequest =
   (): AppThunk<void> => async (dispatch, getState) => {
     const state = getState();
-    const { visibleSimulationId } = state.app;
-    const visibleSimulation = simulationSelectors.selectById(
+    const { visibleScenarioId } = state.app;
+    const visibleSimulation = scenarioSelectors.selectById(
       state,
-      visibleSimulationId
+      visibleScenarioId
     )!;
     const { heroSelectionId, villianSelectionId } = visibleSimulation;
     const heroSelection = selectionSelectors.selectById(
@@ -46,8 +43,8 @@ export const thunkSimulationRequest =
     });
     const requestId = createId();
     dispatch(
-      updateSimulation({
-        id: visibleSimulationId,
+      updateScenario({
+        id: visibleScenarioId,
         changes: { requestId: requestId },
       })
     );

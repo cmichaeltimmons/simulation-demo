@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export type App = {
-  visibleSimulationId: string;
+  visibleScenarioId: string;
 };
 
 const initialState: App = {
-  visibleSimulationId: "",
+  visibleScenarioId: "",
 };
 
 export const slice = createSlice({

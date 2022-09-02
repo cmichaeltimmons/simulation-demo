@@ -4,7 +4,7 @@ import { slice as categoriesSlice } from "./sliceCategories";
 import { slice as cellsSlice } from "./sliceCells";
 import { slice as selectionSlice } from "./sliceSelection";
 import { slice as appSlice } from "./sliceApp";
-import { slice as simulationSlice } from "./sliceSimulation";
+import { slice as simulationSlice } from "./sliceScenario";
 import { slice as simulationRequestSlice } from "./sliceSimulationRequest";
 import { createDefaultState } from "./createDefaultState";
 
@@ -15,11 +15,11 @@ export const createStore = (preloadedState = {} as PreLoadedStateType) =>
   configureStore({
     preloadedState,
     reducer: {
-      simulations: simulationSlice.reducer,
+      scenario: simulationSlice.reducer,
       categories: categoriesSlice.reducer,
       cells: cellsSlice.reducer,
       selections: selectionSlice.reducer,
-      SimulationRequests: simulationRequestSlice.reducer,
+      simulationRequests: simulationRequestSlice.reducer,
       app: appSlice.reducer,
     },
   });
