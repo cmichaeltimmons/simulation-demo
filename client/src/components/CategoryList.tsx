@@ -7,8 +7,9 @@ import { CategoryListItem } from "./CategoryListItem";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "250px",
-    backgroundColor: theme.palette.background.paper,
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
   },
 }));
 
@@ -21,7 +22,11 @@ export const SwitchList = (props: { selectionId: string }) => {
   return (
     <List className={classes.root}>
       {categoryIds.map((id) => (
-        <CategoryListItem key={id} selectionId={props.selectionId} categoryId={id} />
+        <CategoryListItem
+          key={id}
+          selectionId={props.selectionId}
+          categoryId={id}
+        />
       ))}
     </List>
   );
