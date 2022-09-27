@@ -15,6 +15,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import { thunkSimulationRequest } from "./thunks/thunkSimulationRequest";
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+
+const theme = createTheme();
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -84,7 +87,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <CssBaseline />
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
