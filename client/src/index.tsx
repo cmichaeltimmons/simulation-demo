@@ -2,20 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider, useDispatch } from "react-redux";
 import store from "./store/store";
-import { Button, CssBaseline } from "@material-ui/core";
+import { Button, CssBaseline } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import { Grid } from "./components/Grid";
 import { scenarioSelectors } from "./store/sliceScenario";
-import {
-  AppBar,
-  Box,
-  makeStyles,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
+import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import { thunkSimulationRequest } from "./thunks/thunkSimulationRequest";
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+import {
+  ThemeProvider,
+  Theme,
+  StyledEngineProvider,
+  createTheme,
+} from "@mui/material/styles";
+import { makeStyles } from "@mui/styles";
+
+declare module "@mui/styles/defaultTheme" {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
 
 const theme = createTheme();
 
@@ -87,9 +92,11 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <CssBaseline />
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </StyledEngineProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

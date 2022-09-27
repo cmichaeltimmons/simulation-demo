@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { cellSelectors } from "../store/sliceCells";
 import { categorySelectors } from "../store/sliceCategories";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   cell: (props: { backgroundColor: string }) => {

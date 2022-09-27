@@ -5,7 +5,7 @@ import {
 } from "../store/sliceSelection";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button } from "@mui/material";
 
 type Props = {
   categoryId: string;

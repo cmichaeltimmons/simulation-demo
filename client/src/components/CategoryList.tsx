@@ -1,9 +1,9 @@
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
+import List from "@mui/material/List";
 import { selectionSelectors } from "../store/sliceSelection";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { CategoryListItem } from "./CategoryListItem";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
