@@ -21,14 +21,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     justifyContent: "space-around",
   },
-  controlPanel: {
-    height: "calc(20vh - 64px)",
-    width: "600px",
-    padding: theme.spacing(1),
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
 }));
 
 const round = (n: number) => Math.round((n + Number.EPSILON) * 1000) / 1000;
@@ -68,17 +60,27 @@ export const App = () => {
           display="flex"
           style={{ justifyContent: "center" }}
           flexDirection="row"
-          key={scenario.heroSelectionId}
+          key={scenario.villianSelectionId}
         >
-          <Grid selectionId={scenario.heroSelectionId} />
+          <div>
+            <Typography variant="h6" align="center">
+              Hero
+            </Typography>
+            <Grid selectionId={scenario.heroSelectionId} />
+          </div>
         </Box>
         <Box
           display="flex"
           style={{ justifyContent: "center" }}
           flexDirection="row"
-          key={scenario.villianSelectionId}
+          key={scenario.heroSelectionId}
         >
-          <Grid selectionId={scenario.villianSelectionId} />
+          <div>
+            <Typography variant="h6" align="center">
+              Villian
+            </Typography>
+            <Grid selectionId={scenario.villianSelectionId} />
+          </div>
         </Box>
         {simulationRequest && simulationRequest.complete && (
           <Snackbar open={!snackbarClosed} autoHideDuration={6000}>
