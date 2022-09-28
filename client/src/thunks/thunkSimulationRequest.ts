@@ -7,6 +7,7 @@ import {
   requestComplete,
 } from "../store/sliceSimulationRequest";
 import { createId } from "../utils";
+import { categorySelectors } from "../store/sliceCategories";
 
 export const thunkSimulationRequest =
   (): AppThunk<void> => async (dispatch, getState) => {
@@ -41,6 +42,14 @@ export const thunkSimulationRequest =
         villianString += cell.value + ",";
       }
     });
+    const heroCategory = categorySelectors.selectById(
+      state,
+      heroSelection.selectedCategoryId
+    )!;
+    const villianCategory = categorySelectors.selectById(
+      state,
+      villianSelection.selectedCategoryId
+    )!;
     const requestId = createId();
     dispatch(
       updateScenario({
@@ -49,7 +58,13 @@ export const thunkSimulationRequest =
       })
     );
     dispatch(
-      createRequest({ id: requestId, hero: heroString, villian: villianString })
+      createRequest({
+        id: requestId,
+        hero: heroString,
+        villian: villianString,
+        heroCategory: heroCategory,
+        villianCategory: villianCategory,
+      })
     );
     const response = await fetch("api/run-simulations", {
       method: "post",

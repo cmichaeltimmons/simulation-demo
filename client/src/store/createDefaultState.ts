@@ -57,22 +57,22 @@ export const createDefaultState = () => {
   const defaultCategoriesArray: Category[] = [
     {
       id: foldId,
-      name: "Fold",
+      name: "fold",
       fill: categoryColors[0],
     },
     {
       id: callId,
-      name: "Call",
+      name: "call",
       fill: categoryColors[3],
     },
     {
       id: raiseId,
-      name: "Raise",
+      name: "raise",
       fill: categoryColors[1],
     },
     {
       id: openId,
-      name: "Open",
+      name: "open",
       fill: categoryColors[2],
     },
   ];
