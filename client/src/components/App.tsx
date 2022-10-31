@@ -49,7 +49,7 @@ export const App = () => {
     <>
       <AppBar color="transparent" position="fixed">
         <Toolbar>
-          <Typography variant="h6">Susquehanna Demo</Typography>
+          <Typography variant="h6"> Demo</Typography>
           <Box sx={{ flexGrow: 1 }}></Box>
           <Button onClick={onAnalyzeClick}>Analyze</Button>
         </Toolbar>
