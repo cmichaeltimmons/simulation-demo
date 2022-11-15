@@ -16,6 +16,7 @@ const inputGlobalStyles = (
     }}
   />
 );
+
 const makeStyles = (theme: Theme) => ({
   mainContainer: {
     paddingTop: "64px",
