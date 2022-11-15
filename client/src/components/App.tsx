@@ -12,10 +12,12 @@ import { useState } from "react";
 
 const makeStyles = (theme: Theme) => ({
   mainContainer: {
+    paddingBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
     paddingTop: "128px",
     height: "calc(80vh - 64px)",
     width: "100vw",
-    padding: theme.spacing(1),
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
