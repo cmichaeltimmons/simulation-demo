@@ -1,17 +1,16 @@
 import { useDispatch } from "react-redux";
-import { Alert, Button, Snackbar } from "@mui/material";
+import { Alert, Button, Snackbar, useTheme } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Grid } from "../components/Grid";
 import { scenarioSelectors } from "../store/sliceScenario";
 import { simulationSelectors } from "../store/sliceSimulationRequest";
-import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Toolbar, Typography, Theme } from "@mui/material";
 import { thunkSimulationRequest } from "../thunks/thunkSimulationRequest";
 import LinearProgress from "@mui/material/LinearProgress";
-import { makeStyles } from "@mui/styles";
 import { useState } from "react";
 
-const useStyles = makeStyles((theme) => ({
+const makeStyles = (theme: Theme) => ({
   mainContainer: {
     paddingTop: "128px",
     height: "calc(80vh - 64px)",
@@ -21,12 +20,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     justifyContent: "space-around",
   },
-}));
+});
 
 const round = (n: number) => Math.round((n + Number.EPSILON) * 1000) / 1000;
 
 export const App = () => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const styles = makeStyles(theme);
   const dispatch = useDispatch();
   const visibleScenarioId = useSelector(
     (state: RootState) => state.app.visibleScenarioId
@@ -55,7 +55,7 @@ export const App = () => {
         </Toolbar>
         {simulationRequest && simulationRequest.inProcess && <LinearProgress />}
       </AppBar>
-      <div className={classes.mainContainer}>
+      <Box sx={styles.mainContainer}>
         <Box
           display="flex"
           style={{ justifyContent: "center" }}
@@ -96,7 +96,7 @@ export const App = () => {
             </Alert>
           </Snackbar>
         )}
-      </div>
+      </Box>
     </>
   );
 };

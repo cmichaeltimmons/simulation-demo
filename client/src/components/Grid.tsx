@@ -6,17 +6,17 @@ import { thunkNewCategory } from "../thunks/thunkNewCategory";
 import { useSelector } from "react-redux";
 import { SwitchList } from "./CategoryList";
 import { Cell } from "./Cell";
-import { makeStyles } from "@mui/styles";
+import GlobalStyles from "@mui/material/GlobalStyles";
+import { Box, Theme, useTheme } from "@mui/material";
 
-const useStyles = makeStyles((theme) => ({
-  "@global": {
-    ".selection-area": {
-      background: "rgba(46, 115, 252, 0.11)",
-      borderRadius: "0.1em",
-      border: "2px solid rgba(98, 155, 255, 0.81)",
-      margin: "0 auto",
-    },
-  },
+const inputGlobalStyles = (
+  <GlobalStyles
+    styles={{
+      ".selection-area": "rgba(46, 115, 252, 0.11)",
+    }}
+  />
+);
+const makeStyles = (theme: Theme) => ({
   mainContainer: {
     paddingTop: "64px",
     height: "calc(100vh - 64px)",
@@ -43,10 +43,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
   },
-}));
+});
 
 export const Grid = (props: { selectionId: string }) => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const styles = makeStyles(theme);
   const { selectionId } = props;
   let selectionRef = useRef<Selection>();
   const dispatch = useAppDispatch();
@@ -74,16 +75,17 @@ export const Grid = (props: { selectionId: string }) => {
 
   return (
     <div>
-      <div className={classes.sectionWrapper}>
-        <section id={props.selectionId} className={classes.selectionContainer}>
+      {inputGlobalStyles}
+      <Box sx={styles.sectionWrapper}>
+        <Box id={props.selectionId} sx={styles.selectionContainer}>
           {cellIds.map((id) => (
             <Cell key={id} cellId={id} />
           ))}
-        </section>
-      </div>
-      <div className={classes.sectionWrapper}>
+        </Box>
+      </Box>
+      <Box sx={styles.sectionWrapper}>
         <SwitchList selectionId={selectionId}></SwitchList>
-      </div>
+      </Box>
     </div>
   );
 };
