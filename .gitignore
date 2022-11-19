@@ -6,7 +6,6 @@
 /client/build
 /.pnp
 .pnp.js
-/OMPEval
 
 # testing
 /coverage
