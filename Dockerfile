@@ -6,9 +6,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-RUN cd /usr/src/app/client
-RUN rm -rf build
-RUN npm install && npm run build
+RUN cd /usr/src/app/client && rm -rf build && npm install && npm run build
 
 #run server
 EXPOSE 8080
