@@ -11,8 +11,13 @@ const HOST = '0.0.0.0';
 const app = express();
 app.use(bodyParser.json())
 
-app.use(express.static(path.join(__dirname, "./OMPEval", "build")));// Serve the client
-app.use(express.static(path.join(__dirname, "./client", "build")));
+const staticPath = express.static(path.join(__dirname, "./client", "build"), {
+    setHeaders: function(res, path) {
+        res.set("Cross-Origin-Opener-Policy", "same-origin");
+        res.set("Cross-Origin-Embedder-Policy", "require-corp");
+      }
+})
+app.use(staticPath);
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);

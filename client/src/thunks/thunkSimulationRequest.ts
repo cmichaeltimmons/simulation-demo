@@ -8,6 +8,10 @@ import {
 } from "../store/sliceSimulationRequest";
 import { createId } from "../utils";
 import { categorySelectors } from "../store/sliceCategories";
+import ComlinkAPI, { api } from "../workers/ComlinkAPI.worker";
+import { wrap } from "comlink";
+const myComlinkWorkerInstance: Worker = new ComlinkAPI();
+const myComlinkWorkerApi = wrap<typeof api>(myComlinkWorkerInstance);
 
 export const thunkSimulationRequest =
   (): AppThunk<void> => async (dispatch, getState) => {
@@ -66,18 +70,11 @@ export const thunkSimulationRequest =
         villianCategory: villianCategory,
       })
     );
-    const response = await fetch("api/run-simulations", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        hero: heroString,
-        villian: villianString,
-      }),
-    });
-    const json = await response.json();
+    const response = await myComlinkWorkerApi.calculateEquity(
+      heroString,
+      villianString
+    );
     dispatch(
-      requestComplete({ id: requestId, hero: json.hero, villian: json.villian })
+      requestComplete({ id: requestId, hero: response, villian: 1 - response })
     );
   };
