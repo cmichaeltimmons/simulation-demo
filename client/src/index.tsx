@@ -5,16 +5,10 @@ import store from "./store/store";
 import { CssBaseline } from "@mui/material";
 import {
   ThemeProvider,
-  Theme,
   StyledEngineProvider,
   createTheme,
 } from "@mui/material/styles";
 import { App } from "./components/App";
-
-declare module "@mui/styles/defaultTheme" {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
 
 const theme = createTheme();
 
