@@ -17,6 +17,8 @@ export const slice = createSlice({
   reducers: {},
 });
 
-export const categorySelectors = categoryAdapter.getSelectors((state: RootState) => {
-  return state.categories;
-});
+export const categorySelectors = categoryAdapter.getSelectors(
+  (state: RootState) => {
+    return state.categories;
+  }
+);

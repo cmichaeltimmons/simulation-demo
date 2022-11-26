@@ -1,10 +1,9 @@
 import { AppThunk } from "../store/store";
-import { newCategory } from '../store/sliceCells';
+import { newCategory } from "../store/sliceCells";
 
-export const thunkNewCategory = (args: { cellId: string }): AppThunk<void> => (
-    dispatch,
-    getState
-  ) => {
+export const thunkNewCategory =
+  (args: { cellId: string }): AppThunk<void> =>
+  (dispatch, getState) => {
     const { cellId } = args;
     const state = getState();
     const cell = state.cells.entities[args.cellId]!;

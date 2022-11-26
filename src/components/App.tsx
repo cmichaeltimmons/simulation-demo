@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { Alert, Button, Snackbar, useTheme } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { Grid } from "../components/Grid";
+import { Grid } from "./Grid";
 import { scenarioSelectors } from "../store/sliceScenario";
 import { simulationSelectors } from "../store/sliceSimulationRequest";
 import { AppBar, Box, Toolbar, Typography, Theme } from "@mui/material";
